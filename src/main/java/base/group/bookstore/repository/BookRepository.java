@@ -1,7 +1,6 @@
-package base.group.online_book_store.repository;
+package base.group.bookstore.repository;
 
-import base.group.online_book_store.model.Book;
-
+import base.group.bookstore.model.Book;
 import java.util.List;
 
 public interface BookRepository {

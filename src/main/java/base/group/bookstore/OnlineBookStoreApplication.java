@@ -1,4 +1,4 @@
-package base.group.online_book_store;
+package base.group.bookstore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

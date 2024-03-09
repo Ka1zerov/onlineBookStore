@@ -1,8 +1,8 @@
-package base.group.online_book_store.service;
+package base.group.bookstore.service;
 
+import base.group.bookstore.model.Book;
+import base.group.bookstore.repository.BookRepository;
 import java.util.List;
-import base.group.online_book_store.model.Book;
-import base.group.online_book_store.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

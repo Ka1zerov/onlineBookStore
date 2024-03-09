@@ -1,4 +1,4 @@
-package base.group.online_book_store;
+package base.group.bookstore;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

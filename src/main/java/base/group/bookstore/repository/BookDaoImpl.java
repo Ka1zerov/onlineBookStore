@@ -1,13 +1,12 @@
-package base.group.online_book_store.repository;
+package base.group.bookstore.repository;
 
-import base.group.online_book_store.model.Book;
+import base.group.bookstore.model.Book;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class BookDaoImpl implements BookRepository {

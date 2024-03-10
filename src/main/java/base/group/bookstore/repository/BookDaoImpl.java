@@ -1,7 +1,9 @@
 package base.group.bookstore.repository;
 
+import base.group.bookstore.exception.EntityNotFoundException;
 import base.group.bookstore.model.Book;
 import java.util.List;
+import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -24,14 +26,14 @@ public class BookDaoImpl implements BookRepository {
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            session.save(book);
+            session.persist(book);
             transaction.commit();
             return book;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't insert book into DB: " + book, e);
+            throw new EntityNotFoundException("Can't insert book into DB: " + book, e);
         } finally {
             if (session != null) {
                 session.close();
@@ -44,7 +46,16 @@ public class BookDaoImpl implements BookRepository {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("SELECT b FROM Book b", Book.class).getResultList();
         } catch (Exception e) {
-            throw new RuntimeException("Can't get all books from DB", e);
+            throw new EntityNotFoundException("Can't get all books from DB", e);
+        }
+    }
+
+    @Override
+    public Optional<Book> findById(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            return Optional.ofNullable(session.find(Book.class, id));
+        } catch (Exception e) {
+            throw new EntityNotFoundException("Can't find book with ID: " + id, e);
         }
     }
 }
